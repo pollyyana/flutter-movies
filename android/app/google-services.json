@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "406973555970",
+    "project_id": "get-filmes",
+    "storage_bucket": "get-filmes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406973555970:android:bf1d95b0c1bb8687620e1b",
+        "android_client_info": {
+          "package_name": "br.com.pontopolly.app_filmes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406973555970-pr8c2fgj5ob77ens6ngs5o0727j8momd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.pontopolly.app_filmes",
+            "certificate_hash": "2e478b997dca5daaeed69840f6a2f08b18116880"
+          }
+        },
+        {
+          "client_id": "406973555970-msedm0ljrb921mbciirnavv1qce5cgeb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdsRijluUBzhiyIo654MndP94znfepSFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406973555970-msedm0ljrb921mbciirnavv1qce5cgeb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
