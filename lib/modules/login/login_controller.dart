@@ -44,6 +44,7 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
   }
 }
 
+
 // teste
 // Future<void> login() async {
     // aparece ou nao aparecer qnd o loader for clicado

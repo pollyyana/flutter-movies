@@ -32,10 +32,13 @@ class MessagesModel {
     required this.message,
     required this.type,
   });
+
   MessagesModel.error({
     required this.title,
     required this.message,
   }) : type = MessageType.error;
+
+
   MessagesModel.info({
     required this.title,
     required this.message,
@@ -49,10 +52,10 @@ extension MessageTypeExtension on MessageType {
     // Switch (MessageType){}
     // ou
     switch (this) {
-      case MessageType.error:
         //red 800 nao existir entao retorna nulo se for nulo pode retornar o red padrao
+      case MessageType.error:
         return Colors.red[600] ?? Colors.red;
-        
+
       case MessageType.info:
         return Colors.blue[200] ?? Colors.blue;
     }
