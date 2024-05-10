@@ -52,6 +52,7 @@ extension MessageTypeExtension on MessageType {
       case MessageType.error:
         //red 800 nao existir entao retorna nulo se for nulo pode retornar o red padrao
         return Colors.red[600] ?? Colors.red;
+        
       case MessageType.info:
         return Colors.blue[200] ?? Colors.blue;
     }
