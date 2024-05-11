@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
     
 class MoviesPage extends StatelessWidget {
 
-  const MoviesPage({ Key? key }) : super(key: key);
+  const MoviesPage({ super.key });
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Movies Page'),
-      ),
-      body: Container(),
+    return const Scaffold(
+     
+      body: Text('Estou nas movies page'),
     );
   }
 }
