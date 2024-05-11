@@ -17,6 +17,11 @@ class LoginServiceImpl implements LoginService {
 
   @override
   Future<UserCredential> login() => _loginRepository.login();
+  
+  //proxy para o repository
+  @override
+  Future<void> logout() => _loginRepository.logout();
+  
 
 }
 //agr login controller precisa ter acesso a login service =)

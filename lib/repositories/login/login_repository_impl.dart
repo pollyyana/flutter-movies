@@ -25,6 +25,14 @@ import 'login_repository.dart';
     }
    throw Exception('Erro ao realizar login com Google');
  }
+ 
+  @override
+  Future<void> logout() async {
+   //desconectar o google senao vai logar automaticamente encima do usuario antigo
+   await GoogleSignIn().signOut();
+   FirebaseAuth.instance.signOut();
+
+  }
     
 }
  

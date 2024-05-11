@@ -38,7 +38,7 @@ class HomePage extends GetView<HomeController> {
       //controlando a navegação o ongenerat... encapsula a rota principal
       body: Navigator(
         initialRoute: '/movies',
-        key: Get.nestedKey(1),
+        key: Get.nestedKey(HomeController.NAVIGATOR_KEY),
         onGenerateRoute: (settings) {
           if (settings.name == '/movies') {
             return GetPageRoute(
