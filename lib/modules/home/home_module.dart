@@ -9,7 +9,9 @@ class HomeModule extends Module {
     GetPage(
       name: '/home',
       page: ()=> const HomePage(),
-      binding: HomeBindings(),
+      binding: HomeBindings(
+        
+      ),
     )
   ];
 }

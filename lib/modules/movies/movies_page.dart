@@ -1,3 +1,4 @@
+import 'package:app_filmes/modules/movies/widgets/movies_filters.dart';
 import 'package:app_filmes/modules/movies/widgets/movies_header.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class MoviesPage extends StatelessWidget {
       child: ListView(
         children: const [
           MoviesHeader(),
+          MoviesFilters(),
         ],
       ),
     );

@@ -12,7 +12,7 @@ class FavoritesPage extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: const Text('Favorites Page'),
       ),
-      body: Text('Estou na favorites Page'),
+      body: const Text('Estou na favorites Page'),
     );
   }
 }
