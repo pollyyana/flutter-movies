@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:app_filmes/application/ui/messages/messages_mixin.dart';
 import 'package:app_filmes/models/genre_model.dart';
 import 'package:app_filmes/service/genres/genres_service.dart';

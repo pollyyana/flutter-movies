@@ -27,5 +27,6 @@ class FilmesAppIcons {
   static const String? _kFontPkg = null;
 
   static const IconData heart = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // ignore: constant_identifier_names
   static const IconData heart_empty = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

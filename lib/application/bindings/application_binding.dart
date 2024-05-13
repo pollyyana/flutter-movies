@@ -10,7 +10,7 @@ class ApplicationBinding implements Bindings {
   //tudo que é permanente e nao morre no sistema
   @override
   void dependencies() {
-    Get.lazyPut(() => RestClient());
+    Get.lazyPut(() => RestClient(), fenix: true);
     Get.lazyPut<LoginRepository>(() => LoginRepositoryImpl(), fenix: true);
     //feniz true vai fzr com que o get nao mate a instacia e matenha no ar
     Get.lazyPut<LoginService>(
