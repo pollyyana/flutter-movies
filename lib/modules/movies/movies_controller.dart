@@ -29,10 +29,9 @@ class MoviesController extends GetxController with MessagesMixin {
     try {
       final genres = await _genresService.getGenres();
       //assignAll buca todos os dados e subscreve tudo que esta na lista GETX
-      this.genres.assignAll(genres);
-    } catch (e, s) {
+     this.genres.assignAll(genres);
+    } catch (e) {
       print(e);
-      print(s);
       _message(MessagesModel.error(
           title: 'erro', message: 'Erro ao buscar Categorias'));
     }
