@@ -1,14 +1,19 @@
+import 'package:app_filmes/modules/movies/widgets/movies_header.dart';
 import 'package:flutter/material.dart';
-    
-class MoviesPage extends StatelessWidget {
+import 'package:get/get.dart';
 
-  const MoviesPage({ super.key });
-  
+class MoviesPage extends StatelessWidget {
+  const MoviesPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-     
-      body: Text('Estou nas movies page'),
+    return SizedBox(
+      width: Get.width,
+      child: ListView(
+        children: const [
+          MoviesHeader(),
+        ],
+      ),
     );
   }
 }
