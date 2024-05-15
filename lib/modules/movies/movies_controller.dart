@@ -14,15 +14,18 @@ class MoviesController extends GetxController with MessagesMixin {
   final _message = Rxn<MessagesModel>();
   //guardar na variavel
   final genres = <GenreModel>[].obs;
-  //fazer a busca do movies 
+  //fazer a busca do movies
   final popularMovies = <MovieModel>[].obs;
   final topRatedMovies = <MovieModel>[].obs;
 
   final _popularMoviesOriginal = <MovieModel>[];
   final _topRatedMoviesOriginal = <MovieModel>[];
 
-  MoviesController( {required GenresService genresService, required MoviesService moviesService})
-      : _genresService = genresService, _moviesService = moviesService;
+  MoviesController(
+      {required GenresService genresService,
+      required MoviesService moviesService})
+      : _genresService = genresService,
+        _moviesService = moviesService;
 
   //metodo para recuperar generos
   // List<GenreModel> get genres => _genres;
@@ -31,24 +34,23 @@ class MoviesController extends GetxController with MessagesMixin {
   void onInit() {
     super.onInit();
     messagesListener(_message);
-  }  
+  }
+
   //ciclo de vida, qnd  atela estiver pronta vai fazer a busca dos dados
   @override
   Future<void> onReady() async {
     super.onReady();
     try {
-      final genres = await _genresService.getGenres();
+      final genresData = await _genresService.getGenres();
       //assignAll buca todos os dados e subscreve tudo que esta na lista GETX
-     this.genres.assignAll(genres);
+      genres.assignAll(genresData);
 
-     //fazer as buscas dos movies
-    final popularMoviesData = await _moviesService.getPopularMovies();
-    final topRatedMoviesData = await _moviesService.getPopularMovies();
-    //atribuição
-    popularMoviesData.assignAll(popularMoviesData);
-    topRatedMoviesData.assignAll(topRatedMoviesData);
-
-
+      //fazer as buscas dos movies
+      final popularMoviesData = await _moviesService.getPopularMovies();
+      final topRatedMoviesData = await _moviesService.getPopularMovies();
+      //atribuição
+      popularMoviesData.assignAll(popularMoviesData);
+      topRatedMoviesData.assignAll(topRatedMoviesData);
     } catch (e, s) {
       print(e);
       print(s);
