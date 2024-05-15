@@ -18,8 +18,8 @@ class MoviesController extends GetxController with MessagesMixin {
   final popularMovies = <MovieModel>[].obs;
   final topRatedMovies = <MovieModel>[].obs;
 
-  final _popularMoviesOriginal = <MovieModel>[];
-  final _topRatedMoviesOriginal = <MovieModel>[];
+  var _popularMoviesOriginal = <MovieModel>[];
+  var _topRatedMoviesOriginal = <MovieModel>[];
 
   MoviesController(
       {required GenresService genresService,
@@ -47,15 +47,40 @@ class MoviesController extends GetxController with MessagesMixin {
 
       //fazer as buscas dos movies
       final popularMoviesData = await _moviesService.getPopularMovies();
-      final topRatedMoviesData = await _moviesService.getPopularMovies();
+      final topRatedMoviesData = await _moviesService.getTopRated();
+
       //atribuição
+      //popular as listas
       popularMovies.assignAll(popularMoviesData);
+      _popularMoviesOriginal = popularMoviesData;
       topRatedMovies.assignAll(topRatedMoviesData);
+      _topRatedMoviesOriginal = topRatedMoviesData;
     } catch (e, s) {
       print(e);
       print(s);
       _message(MessagesModel.error(
           title: 'erro', message: 'Erro ao carregar dados da pagina'));
+    }
+  }
+
+  //metodo
+  //filtro dentro das listas no buscar
+  void filterByName(String title) {
+    if (title.isNotEmpty) {
+      var newPoularMovies = _popularMoviesOriginal.where((movie) {
+        return movie.title.toLowerCase().contains(title.toLowerCase());
+      });
+      //nova lista
+      // where vai filtrar a lista
+      var newTopRatedMovies = _topRatedMoviesOriginal.where((movie) {
+        return movie.title.toLowerCase().contains(title.toLowerCase());
+      });
+      //subscreve a lista por essa nova lista
+      popularMovies.assignAll(newPoularMovies);
+      topRatedMovies.assignAll(newTopRatedMovies);
+    } else {
+      popularMovies.assignAll(_popularMoviesOriginal);
+      topRatedMovies.assignAll(_topRatedMoviesOriginal);
     }
   }
 }
