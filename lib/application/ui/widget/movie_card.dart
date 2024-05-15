@@ -1,12 +1,16 @@
 import 'package:app_filmes/application/ui/filmes_app_icons_icons.dart';
+import 'package:app_filmes/models/movie_model.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class MovieCard extends StatelessWidget {
-  const MovieCard({super.key});
+  final MovieModel movie;
+  final dateFormat = DateFormat('y');
+   MovieCard({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 158,
       height: 280,
       child: Stack(
@@ -24,7 +28,7 @@ class MovieCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     clipBehavior: Clip.antiAlias,
                     child: Image.network(
-                      'https://upload.wikimedia.org/wikipedia/pt/6/63/Joker_%282019%29.jpg',
+                      movie.posterPath,
                       width: 148,
                       height: 184,
                       fit: BoxFit.cover,
@@ -34,15 +38,15 @@ class MovieCard extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const Text(
-                  'Coringa',
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                 Text(
+                  movie.title,
+                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                 ),
-                const Text(
-                  '2019',
-                  style: TextStyle(
+                 Text(
+                  dateFormat.format(DateTime.parse(movie.releaseDate)),
+                  style: const TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.w300,
                       color: Colors.grey),
@@ -57,7 +61,7 @@ class MovieCard extends StatelessWidget {
             right: -10,
             child: Material(
               elevation: 5,
-              shape: CircleBorder(),
+              shape: const CircleBorder(),
               clipBehavior: Clip.antiAlias,
               child: SizedBox(
                 height: 30,

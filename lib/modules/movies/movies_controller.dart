@@ -49,8 +49,8 @@ class MoviesController extends GetxController with MessagesMixin {
       final popularMoviesData = await _moviesService.getPopularMovies();
       final topRatedMoviesData = await _moviesService.getPopularMovies();
       //atribuição
-      popularMoviesData.assignAll(popularMoviesData);
-      topRatedMoviesData.assignAll(topRatedMoviesData);
+      popularMovies.assignAll(popularMoviesData);
+      topRatedMovies.assignAll(topRatedMoviesData);
     } catch (e, s) {
       print(e);
       print(s);

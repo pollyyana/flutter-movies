@@ -33,7 +33,9 @@ class MoviesGroup extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: movies.length,
                 itemBuilder: (context, index) {
-                  return const MovieCard();
+                  return  MovieCard(
+                    movie: movies[index],
+                  );
                 },
               );
             }),
