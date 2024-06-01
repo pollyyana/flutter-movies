@@ -1,4 +1,5 @@
 import 'package:app_filmes/application/ui/filmes_app_icons_icons.dart';
+import 'package:app_filmes/application/ui/theme_extensions.dart';
 import 'package:app_filmes/models/movie_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,12 +8,14 @@ import 'package:intl/intl.dart';
 class MovieCard extends StatelessWidget {
   final MovieModel movie;
   final dateFormat = DateFormat('y');
-   MovieCard({super.key, required this.movie});
+  final VoidCallback favoriteCallback;
+
+  MovieCard({super.key, required this.movie, required this.favoriteCallback});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         Get.toNamed('/movie/detail', arguments: movie.id);
       },
       child: Container(
@@ -23,7 +26,6 @@ class MovieCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
-                
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Material(
@@ -33,7 +35,7 @@ class MovieCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       clipBehavior: Clip.antiAlias,
                       child: Image.network(
-                        movie.posterPath,
+                        'https://image.tmdb.org/t/p/w200/${movie.posterPath}',
                         width: 148,
                         height: 184,
                         fit: BoxFit.cover,
@@ -43,13 +45,14 @@ class MovieCard extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                   Text(
+                  Text(
                     movie.title,
-                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                    style: const TextStyle(
+                        fontSize: 12, fontWeight: FontWeight.w600),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                   ),
-                   Text(
+                  Text(
                     dateFormat.format(DateTime.parse(movie.releaseDate)),
                     style: const TextStyle(
                         fontSize: 11,
@@ -72,10 +75,12 @@ class MovieCard extends StatelessWidget {
                   height: 30,
                   child: IconButton(
                     iconSize: 13,
-                    onPressed: () {},
-                    icon: const Icon(
-                      FilmesAppIcons.heart,
-                      color: Colors.grey,
+                    onPressed: favoriteCallback,
+                    icon: Icon(
+                      movie.favorite
+                          ? FilmesAppIcons.heart
+                          : FilmesAppIcons.heart_empty,
+                      color: movie.favorite ? context.themeRed : Colors.grey,
                     ),
                   ),
                 ),
