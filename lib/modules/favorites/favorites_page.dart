@@ -1,18 +1,38 @@
+import 'package:app_filmes/application/ui/widget/movie_card.dart';
+import 'package:app_filmes/modules/favorites/favorites_controller.dart';
 import 'package:flutter/material.dart';
-    
-class FavoritesPage extends StatelessWidget {
+import 'package:get/get.dart';
 
-  const FavoritesPage({ super.key });
-  
+class FavoritesPage extends GetView<FavoritesController> {
+  const FavoritesPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         // nao coloca o item de back
         automaticallyImplyLeading: false,
-        title: const Text('Favorites Page'),
+        title: const Text('Favoritos'),
       ),
-      body: const Text('Estou na favorites Page'),
+      body: Obx(() {
+        return SingleChildScrollView(
+          
+          child: SizedBox(
+            width: Get.width,
+            child: Wrap(
+              alignment: WrapAlignment.spaceAround,
+              children: controller.movies
+                  .map(
+                    (m) => MovieCard(
+                      movie: m,
+                      favoriteCallback: () {},
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
+        );
+      }),
     );
   }
 }
