@@ -25,7 +25,7 @@ class FavoritesPage extends GetView<FavoritesController> {
                   .map(
                     (m) => MovieCard(
                       movie: m,
-                      favoriteCallback: () {},
+                      favoriteCallback: () => controller.removeFavorite(m),
                     ),
                   )
                   .toList(),

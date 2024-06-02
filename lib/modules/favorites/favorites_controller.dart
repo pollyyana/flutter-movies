@@ -16,12 +16,25 @@ class FavoritesController extends GetxController {
         _authService = authService;
 
   @override
-  void onReady() async {
+onReady()  {
     super.onReady();
+    _getFavorites();
+  }
+  
+  Future<void> _getFavorites() async {
     var user = _authService.user;
     if (user != null) {
       var favorites = await _moviesService.getFavoritiesMovies(user.uid);
       movies.assignAll(favorites);
+    }
+  }
+
+  Future<void> removeFavorite(MovieModel movie)async{
+     var user = _authService.user;
+    if (user != null) {
+      await _moviesService.addOrRemoveFavorite(user.uid, movie.copyWith(favorite: false));
+      //pegar a lista e remover os movies que vieram aqui
+      movies.remove(movie);
     }
   }
 }
