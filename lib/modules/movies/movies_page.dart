@@ -2,6 +2,7 @@ import 'package:app_filmes/modules/movies/movies_controller.dart';
 import 'package:app_filmes/modules/movies/widgets/movies_filters.dart';
 import 'package:app_filmes/modules/movies/widgets/movies_group.dart';
 import 'package:app_filmes/modules/movies/widgets/movies_header.dart';
+import 'package:app_filmes/modules/movies/widgets/movies_top_rated.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,17 +13,20 @@ class MoviesPage extends GetView<MoviesController> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: Get.width,
+      // width: double.infinity,
       child: ListView(
         children: [
           const MoviesHeader(),
           const MoviesFilters(),
-          MoviesGroup(
-            title: ' Mais populares',
-            movies: controller.popularMovies,
+          SizedBox(
+            width: double.infinity,
+            child: MoviesGroup(
+              title: ' Mais populares',
+              movies: controller.popularMovies,
+            ),
           ),
           //controller ṕassando os dados para o grupo
-          MoviesGroup(
+          MoviesTopRated(
             title: ' Top filmes',
             movies: controller.topRatedMovies,
           ),

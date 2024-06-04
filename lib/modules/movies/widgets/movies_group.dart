@@ -20,49 +20,50 @@ class MoviesGroup extends GetView<MoviesController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
+           Container(
             height: 20,
+            
           ),
           Text(
             title,
             style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          SizedBox(
-            height: 280,
-            child: Obx(
-              () {
-                return ListView(
-                  shrinkWrap: true,
-                  children: [
-                    CarouselSlider.builder(
-                      itemCount: movies.length,
-                      options: CarouselOptions(
-                        scrollDirection: Axis.horizontal,
-                        autoPlay: true,
-                        // height: 230,
-                        enlargeCenterPage: false,
-                        // aspectRatio: 16 / 9,
-                        // enableInfiniteScroll: true,
-                        autoPlayAnimationDuration:
-                            const Duration(milliseconds: 800),
-                        // viewportFraction: 0.8,
-                      ),
-                      itemBuilder: (BuildContext context, int index, int realIndex) {
-                        
-                        var movie = movies[index];
+          // Container(
 
-                        return MovieCard(
-                          movie: movie,
-                          favoriteCallback: () =>
-                              controller.FavoriteMovie(movie),
-                        );
-                      },
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
+          //   color: Colors.red,
+          //   height: 280,
+             Obx(
+               () {
+                 return movies.isEmpty
+                     ? const Center(child: CircularProgressIndicator.adaptive())
+                     : CarouselSlider.builder(
+                     
+                         itemCount: movies.length,
+                         options: CarouselOptions(
+                           scrollDirection: Axis.horizontal,
+                           autoPlay: true,
+                           height: 280,
+                           enlargeCenterPage: false,
+                           aspectRatio: 16 / 9,
+                           viewportFraction: 0.8,
+                           
+                           autoPlayAnimationDuration:
+                               const Duration(milliseconds: 800),
+                         ),
+                         itemBuilder: 
+                             (BuildContext context, int index, int realIndex) {
+                           var movie = movies[index];
+                                   
+                           return MovieCard(
+                             movie: movie,
+                             favoriteCallback: () =>
+                                 controller.FavoriteMovie(movie),
+                           );
+                         },
+                       );
+               },
+             ),
+          
         ],
       ),
     );
@@ -83,15 +84,25 @@ class MoviesGroup extends GetView<MoviesController> {
 //               );
 
 
-// return ListView.builder(
-//                 shrinkWrap: true,
-//                 scrollDirection: Axis.horizontal,
-//                 itemCount: movies.length,
-//                 itemBuilder: (context, index) {
-//                   var movie = movies[index];
-//                   return MovieCard(
-//                     movie: movie,
-//                     favoriteCallback: () => controller.FavoriteMovie(movie),
-//                   );
-//                 },
-//               );
+// CarouselSlider.builder(
+//                         itemCount: movies.length,
+//                         options: CarouselOptions(
+//                           scrollDirection: Axis.horizontal,
+//                           autoPlay: true,
+//                           height: 280,
+//                           enlargeCenterPage: false,
+                          
+//                           autoPlayAnimationDuration:
+//                               const Duration(milliseconds: 800),
+//                         ),
+//                         itemBuilder:
+//                             (BuildContext context, int index, int realIndex) {
+//                           var movie = movies[index];
+
+//                           return MovieCard(
+//                             movie: movie,
+//                             favoriteCallback: () =>
+//                                 controller.FavoriteMovie(movie),
+//                           );
+//                         },
+//                       );
