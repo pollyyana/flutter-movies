@@ -18,7 +18,7 @@ class MovieCard extends StatelessWidget {
       onTap: () {
         Get.toNamed('/movie/detail', arguments: movie.id);
       },
-      child: Container(
+      child: SizedBox(
         width: 158,
         height: 280,
         child: Stack(

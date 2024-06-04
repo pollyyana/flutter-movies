@@ -18,9 +18,9 @@ class MovieDetailHeader extends StatelessWidget {
           itemCount: movieData.urlImages.length,
           itemBuilder: (context, index) {
             final image = movieData.urlImages[index];
-            return  Padding(
+            return Padding(
               padding: const EdgeInsets.all(2),
-              child:  Image.network(image),
+              child: Image.network(image),
             );
           },
         ),
@@ -30,3 +30,6 @@ class MovieDetailHeader extends StatelessWidget {
     }
   }
 }
+
+
+
